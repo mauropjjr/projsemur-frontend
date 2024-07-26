@@ -17,7 +17,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Projetos',
-    url: '/',
+    url: '/projetos',
     iconComponent: { name: 'cil-drop' }
   },
   {
@@ -32,7 +32,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Exigência',
-    url: '/',
+    url: '/exigencias',
     iconComponent: { name: 'cil-drop' }
   },
   {

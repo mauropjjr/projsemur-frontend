@@ -19,6 +19,13 @@ export const routes: Routes = [
         loadChildren: () => import('./views/dashboard/routes').then((m) => m.routes)
       },
       {
+        path: 'projetos',
+        loadComponent: () => import('./views/projetos/projetos.component').then(m => m.ProjetosComponent),
+        data: {
+          title: 'Projetos'
+        }
+      },
+      {
         path: 'theme',
         loadChildren: () => import('./views/theme/routes').then((m) => m.routes)
       },
