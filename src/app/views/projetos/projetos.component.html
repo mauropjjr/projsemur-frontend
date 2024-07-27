@@ -1,3 +1,4 @@
+
 <c-card class="mb-3">
     <c-card-header>
        <form cForm [formGroup]="buscaForm" novalidate>
@@ -30,8 +31,7 @@
                     <td scope="row">{{item.nome}}</td>
                     <td scope="row"><c-badge [color]="item.ativo ? 'success' : 'danger'">{{item.ativo ? 'Sim' : 'Não'}}</c-badge></td>
                     <td>
-                        <input cButton class="me-1" size="sm" color="primary" type="button" value="Editar"
-                            [routerLink]="['/exigencias','save',item.id]">
+                        <input cButton class="me-1" size="sm" color="primary" type="button" value="Editar" (click)="modalAdd=true">
                         <input cButton class="me-1" size="sm" color="danger" type="button" value="Remover"
                         (click)="openRemove(item.id)">
                     </td>
@@ -64,5 +64,20 @@
     </c-modal-footer>
   </c-modal>
  
+  <c-modal #modal backdrop="static" id="modaladd" [visible]="modalAdd" size="xl"  >
+    <c-modal-header>
+      <h5 cModalTitle>Projetos</h5>
+      <button (click)="modalAdd=false" cButtonClose></button>
+    </c-modal-header>
+    <c-modal-body><app-projetos-form (fechar)="closeAdd()"></app-projetos-form></c-modal-body>
+    <c-modal-footer>
+        <button (click)="modalAdd=false; projetosFormComponent.onReset()" cButton color="secondary">
+            Cancelar
+          </button>
+      <button cButton color="primary" (click)="projetosFormComponent.onSubmit()">Salvar</button>
+
+
+    </c-modal-footer>
+  </c-modal>
 
   <!-- <app-floating-button [routerLink]="['save']"></app-floating-button> -->
