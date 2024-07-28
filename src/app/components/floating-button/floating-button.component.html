@@ -1,0 +1,14 @@
+<div class="c-float-button" [ngClass]="{'top': vertical === 'top', 'bottom': vertical === 'bottom', 'start': horizontal === 'start', 'end': horizontal === 'end'}">
+    <button cButton class="c-float-button__main btn" *ngIf="tipoPerfil != 'Credor'" [class]="getButtonColorStyle()">
+      <i class="c-icon cil-plus"></i>
+    </button>
+    <div cButton class="c-float-button__list">
+      <button class="c-float-button__item btn" [class]="getButtonColorStyle()">
+        <i class="c-icon cil-pencil"></i>
+      </button>
+      <button cButton class="c-float-button__item btn" [class]="getButtonColorStyle()">
+        <i class="c-icon cil-trash"></i>
+      </button>
+      <!-- Adicione mais itens conforme necessário -->
+    </div>
+  </div>

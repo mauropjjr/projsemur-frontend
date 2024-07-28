@@ -1,0 +1,64 @@
+.c-float-button {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    $size: 60px; // Tamanho do botão principal
+    z-index: 1044;
+  
+    &__main {
+     // background-color: $button-bg-color;
+    //  color: $button-text-color;
+      border: none;
+      border-radius: 50%;
+      width: $size;
+      height: $size;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 24px;
+      
+      
+    }
+         // Posicionamento vertical
+         &.top {
+            top: $size + 20px;
+          }
+      
+          &.bottom {
+            bottom: $size + 40px;
+          }
+      
+          // Posicionamento horizontal
+          &.start {
+            left: 40px;
+          }
+      
+          &.end {
+            right: 40px;
+          }
+  
+    &__list {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+  
+ 
+  
+      .c-float-button__item {
+      //  background-color: $button-bg-color;
+     //   color: $button-text-color;
+        border: none;
+        border-radius: 50%;
+        width: $size;
+        height: $size;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 20px;
+      }
+    }
+  }
+  

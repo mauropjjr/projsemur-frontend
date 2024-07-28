@@ -64,7 +64,13 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -105,6 +111,39 @@
               "src/scss/styles.scss"
             ],
             "scripts": []
+          }
+        }
+      }
+    },
+    "object-handler": {
+      "projectType": "library",
+      "root": "projects/object-handler",
+      "sourceRoot": "projects/object-handler/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/object-handler/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/object-handler/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/object-handler/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/object-handler/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
           }
         }
       }

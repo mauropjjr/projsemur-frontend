@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AppInterceptor implements HttpInterceptor {
-  private apiUrl = 'http://193.203.183.228:8090/';
+  private apiUrl = 'http://localhost:5149/api/';
   
   constructor(
     private toastr: ToastrService,

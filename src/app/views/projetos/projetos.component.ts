@@ -3,7 +3,9 @@ import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ButtonDirective, ModalComponent, ModalHeaderComponent, ModalTitleDirective, ThemeDirective, ButtonCloseDirective, ModalBodyComponent, ModalFooterComponent, PageItemDirective, PageLinkDirective, PaginationComponent, BadgeComponent, CardBodyComponent, CardComponent, CardFooterComponent, CardGroupComponent, CardHeaderComponent, TableDirective, RowComponent, ColComponent, FormControlDirective, FormDirective, FormFloatingDirective, FormLabelDirective, FormSelectDirective, GutterDirective } from '@coreui/angular';
-import {ProjetosFormComponent} from './projetos-form/projetos-form.component'
+import {ProjetosFormComponent} from './projetos-form/projetos-form.component';
+import {ExigenciaService} from '../../services/exigencia.service';
+import {PaginacaoEnum} from '../../enums/paginacao.enum';
 @Component({
   selector: 'app-projetos',
   standalone: true,
@@ -31,11 +33,11 @@ export class ProjetosComponent {
   total: any;
   buscaForm!: FormGroup;
   removeId: number | undefined;
-  paginacaoEnum =  30;
+  paginacaoEnum =  PaginacaoEnum;
   exigencias = [{id:1, nome: "teste", ativo:1},{id:2, nome: "teste efr wq eqwr wqrqrr", ativo:1}];
   modalAdd = false;
   public visible = false;
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private exigenciaService: ExigenciaService) {
     this.createForm();
     this.buscar();
   } 
@@ -57,8 +59,10 @@ export class ProjetosComponent {
     this.removeId = undefined;
   }
 
-  buscar(){
-    console.log(this.buscaForm.value);
+  buscar(page: any = 1) {
+    this.exigenciaService.get({ limit: this.paginacaoEnum.Limit, page: page, ...this.buscaForm.value }).subscribe(data => {
+      this.bancos = data;
+    });
   }
   closeAdd(){
     this.modalAdd = false;

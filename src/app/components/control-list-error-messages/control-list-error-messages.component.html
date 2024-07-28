@@ -1,0 +1,8 @@
+<c-alert color="warning" *ngIf="listErros && listErros.length">
+  <h4 cAlertHeading>Atenção!</h4>
+  <p>Confira as informações abaixo.</p>
+  <hr />
+  <ul>
+    <li *ngFor="let e of listErros;"><strong>{{e.campo}}: </strong> {{e.erroMsg}}</li>
+  </ul>
+</c-alert>
