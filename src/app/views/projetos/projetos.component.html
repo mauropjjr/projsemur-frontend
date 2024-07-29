@@ -33,7 +33,7 @@
                         <!-- <td scope="row"><c-badge [color]="item.ativo ? 'success' : 'danger'">{{item.ativo ? 'Sim' : 'Não'}}</c-badge></td> -->
                          <td>{{item.ordem}}</td>
                         <td scope="row" nowrap>
-                            <button cButton class="me-1" size="sm" color="primary" type="button" value="Editar" (click)="modalAdd=true"><svg cIcon name="cil-pen" [title]="'Editar'" size="1xl"></svg></button>
+                            <button cButton class="me-1" size="sm" color="primary" type="button" value="Editar" (click)="editarItem(item)"><svg cIcon name="cil-pen" [title]="'Editar'" size="1xl"></svg></button>
                             <button cButton class="me-1" size="sm" color="danger" type="button" value="Remover"
                             (click)="openRemove(item.id)"><svg cIcon name="cil-trash" [title]="'Excluir'" size="1xl"></svg></button>
                         </td>
@@ -77,7 +77,7 @@
       <h5 cModalTitle>Projetos</h5>
       <button (click)="modalAdd=false" cButtonClose></button>
     </c-modal-header>
-    <c-modal-body><app-projetos-form (fechar)="closeAdd()"></app-projetos-form></c-modal-body>
+    <c-modal-body><app-projetos-form (fechar)="closeAdd()" [editar]="editar"></app-projetos-form></c-modal-body>
     <c-modal-footer>
         <button (click)="projetosFormComponent.onReset()" cButton color="secondary">
             Cancelar

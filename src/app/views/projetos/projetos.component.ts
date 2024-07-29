@@ -34,11 +34,11 @@ import { ControlListErrorMessagesComponent} from '../../components/control-list-
 export class ProjetosComponent {
   @ViewChild(ProjetosFormComponent) projetosFormComponent!: ProjetosFormComponent;
 
-  bancos: any;
   p = 1;
   total: any;
   buscaForm!: FormGroup;
   removeId: number | undefined;
+  editar: any;
   paginacaoEnum =  PaginacaoEnum;
   exigencias: any;
   modalAdd = false;
@@ -75,8 +75,13 @@ export class ProjetosComponent {
       this.exigencias = data;
     });
   }
+  editarItem(item: any){
+    this.editar = item;
+    this.modalAdd = true;
+  }
   closeAdd(){
     this.modalAdd = false;
+    this.buscar(event);
   }
 
 }

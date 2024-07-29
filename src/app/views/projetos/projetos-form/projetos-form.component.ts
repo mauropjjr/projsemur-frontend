@@ -1,5 +1,5 @@
 import { CommonModule, NgStyle } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, ActivatedRoute, RouterLink } from '@angular/router';
 import { BadgeComponent, ButtonDirective, ButtonGroupComponent, CardBodyComponent, CardComponent, CardFooterComponent, CardGroupComponent, ColComponent, FormCheckComponent, FormCheckInputDirective, FormCheckLabelDirective, FormControlDirective, FormDirective, FormFeedbackComponent, FormFloatingDirective, FormLabelDirective, GutterDirective, RowComponent } from '@coreui/angular';
@@ -24,11 +24,12 @@ import { ControlListErrorMessagesComponent } from "../../../components/control-l
   templateUrl: './projetos-form.component.html',
   styleUrl: './projetos-form.component.scss'
 })
-export class ProjetosFormComponent {
+export class ProjetosFormComponent implements OnChanges {
   form!: FormGroup;
   submitted = false;
   errors: any;
   @Output() fechar: EventEmitter<any> = new EventEmitter();
+  @Input() editar: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -42,7 +43,7 @@ export class ProjetosFormComponent {
     
     //this.toastr.success('Hello world!', 'Toastr fun!');
     this.createForm();
-        if (this.route.snapshot.params['id'] != null) {
+      //  if (this.route.snapshot.params['id'] != null) {
 
       // this.produtoService.getId(this.route.snapshot.params['id']).subscribe((data: any) => {
       //   if (data) {
@@ -50,6 +51,11 @@ export class ProjetosFormComponent {
       //   }
       // });
 
+    //}
+  }
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['editar'] && this.editar != null) {
+      this.form.patchValue(this.editar);
     }
   }
     get getForms() {
@@ -58,7 +64,7 @@ export class ProjetosFormComponent {
     createForm() {
       this.form = this.formBuilder.group({
         id: [],
-        nome: [], // ['', [Validators.required]],
+        nome: ['', [Validators.required]],
         ordem: [], // ['', [Validators.required]]
   
       }
@@ -85,7 +91,6 @@ export class ProjetosFormComponent {
           this.exogenciaService.save(data).subscribe((data: any) => {
             this.toastr.success('Salvo com sucesso!', 'Sucesso');
             this.onReset();
-            this.fechar.emit(true);
           }, (error: { error: any; }) => {
             this.errors = error.error.errors;
             
