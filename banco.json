@@ -1,0 +1,159 @@
+{
+    "exigencias":{
+    "items": [
+      {
+        "exigenciaid": 127,
+        "nome": "-",
+        "ordem": null
+      },
+      {
+        "exigenciaid": 129,
+        "nome": "-",
+        "ordem": null
+      },
+      {
+        "exigenciaid": 130,
+        "nome": "- ------------------------EXIGENCIAS DE VISTORIA DO FISCAL------------------------------------",
+        "ordem": "m.c7"
+      },
+      {
+        "exigenciaid": 181,
+        "nome": "7 - ANEXAR ART DE REGULARIZAÇÃO",
+        "ordem": null
+      },
+      {
+        "exigenciaid": 225,
+        "nome": "252 - FICA CONDICIONADO AO HABITE SE A APRESENTAÇÃO DA (LO) LICENÇA DE OPERAÇÃO, CONFORME LEI 3.612 DE 30/04/1999.",
+        "ordem": "m.a2.2"
+      },
+      {
+        "exigenciaid": 222,
+        "nome": "EM BRANCO DISPONIVEL",
+        "ordem": null
+      },
+      {
+        "exigenciaid": 233,
+        "nome": "240 - ATENDER AS ORIENTAÇÕES DA NORMA BRASILEIRA DE ACESSIBILIDADE NBR 9050 (3ª EDIÇÃO)",
+        "ordem": "l.a1.2"
+      },
+      {
+        "exigenciaid": 191,
+        "nome": "----------- DOCUMENTAÇÃO  -------------------------",
+        "ordem": "A.A0"
+      },
+      {
+        "exigenciaid": 194,
+        "nome": "196 - PROCESSO EM ANALISE;",
+        "ordem": null
+      },
+      {
+        "exigenciaid": 199,
+        "nome": "197 - APRESENTAR 4 VIAS DO PROJETO E MEMORIAL, COM AS DEVIDAS ASSINATURAS E CARIMBOS;",
+        "ordem": null
+      },
+      {
+        "exigenciaid": 198,
+        "nome": "197 - APRESENTAR 4 VIAS DO PROJETO E MEMORIAL, COM AS DEVIDAS ASSINATURAS E CARIMBOS;",
+        "ordem": null
+      },
+      {
+        "exigenciaid": 196,
+        "nome": "196 - PROCESSO EM ANALISE",
+        "ordem": null
+      },
+      {
+        "exigenciaid": 206,
+        "nome": "41 - ANEXAR O ARQUIVO CAD(DWG - MAXIMO 2010)",
+        "ordem": "b.b1.2"
+      },
+      {
+        "exigenciaid": 17,
+        "nome": "32 - REVER NOME DO PARCELAMENTO",
+        "ordem": "b.a4"
+      },
+      {
+        "exigenciaid": 224,
+        "nome": "251 - ANEXAR PROTOCOLO DA SOLICITAÇÃO DE LICENÇA AMBIENTAL, PARA DAR PROSSEGUIMENTO A ANALISE DESTE PROCESSO.",
+        "ordem": "m.a2.1"
+      },
+      {
+        "exigenciaid": 228,
+        "nome": "86 - ATENDER À ACESSIBILIDADE QUANTO À NECESSIDADE DE VAGA PNE (3,60X4,80M)",
+        "ordem": null
+      },
+      {
+        "exigenciaid": 231,
+        "nome": "- ------------------------EXIGENCIAS DE BOMBEIRO------------------------------------",
+        "ordem": "m.c6.1"
+      },
+      {
+        "exigenciaid": 18,
+        "nome": "33 - REVER NOME DO BAIRRO",
+        "ordem": "b.a5"
+      },
+      {
+        "exigenciaid": 16,
+        "nome": "31 - IDENTIFICAR CORRETAMENTE A ATIVIDADE DO EMPREENDIMENTO (UNIRRESIDENCIAL, CLINICA, ESCOLA, ETC...)",
+        "ordem": "b.a3"
+      },
+      {
+        "exigenciaid": 223,
+        "nome": "9 - INDICAR O NÚMERO DA ART/RRT DE REGULARIZAÇÃO",
+        "ordem": "a.a6.1"
+      },
+      {
+        "exigenciaid": 182,
+        "nome": "11 -ANEXAR ART/RRT VALIDA E ASSINADA QUANDO COMPLETAR VIAS.",
+        "ordem": "a.ar.2"
+      },
+      {
+        "exigenciaid": 184,
+        "nome": "13 - SUBSTITUIR A ART/RRT REVENDO ENDERECO COMPLETO E CORRETO DA OBRA",
+        "ordem": "a.ar.4"
+      },
+      {
+        "exigenciaid": 185,
+        "nome": "14 - SUBSTITUIR A ART/RRT REVENDO CODIGO OBJETO CORRETO",
+        "ordem": "a.ar.5"
+      },
+      {
+        "exigenciaid": 20,
+        "nome": "35 - REVER NÚMERO DE MATRÍCULA E CRI",
+        "ordem": "b.a7"
+      },
+      {
+        "exigenciaid": 232,
+        "nome": ".................... EDIFICIOS PUBLICOS OU PRIVADOS DESTINADOS AO USO COLETIVO................",
+        "ordem": "l.a1.1"
+      },
+      {
+        "exigenciaid": 202,
+        "nome": "49 - FALTAM ASSINATURAS NAS COPIAS ANEXADAS",
+        "ordem": "b.b5.3"
+      },
+      {
+        "exigenciaid": 217,
+        "nome": "42 - ANEXAR ARQUIVO DE CONFIGURAÇÃO DE PENAS (.CTB) ZIPADO",
+        "ordem": "b.b1.3"
+      },
+      {
+        "exigenciaid": 200,
+        "nome": "48 - APRESENTAR 3 VIAS DO PROJETO E MEMORIAL, COM AS DEVIDAS ASSINATURAS;",
+        "ordem": "b.b5.2"
+      },
+      {
+        "exigenciaid": 203,
+        "nome": "50 - DEVOLVER AS VIAS ASSINALADAS;",
+        "ordem": "b.b5.4"
+      },
+      {
+        "exigenciaid": 229,
+        "nome": "243 - ATENDER À ACESSIBILIDADE QUANTO À NECESSIDADE DE VAGA PNE (3,60X4,80M)",
+        "ordem": "l.a4"
+      }
+    ],
+    "pageNumber": 1,
+    "totalPages": 16,
+    "totalCount": 456
+}
+  }

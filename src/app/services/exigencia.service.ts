@@ -13,10 +13,10 @@ export class ExigenciaService {
 
 
   get(params: any = null): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl+'.json', {params:  ObjectHandler.removeEmptyValues(params)});
+    return this.http.get<any[]>(this.apiUrl, {params:  ObjectHandler.removeEmptyValues(params)});
   }
   getId(id: number): Observable<any> {
-    const url = `${this.apiUrl}/view/${id}.json`;
+    const url = `${this.apiUrl}/${id}`;
     return this.http.get<any>(url);
   }
 
@@ -24,16 +24,16 @@ export class ExigenciaService {
     if (objetoSave.id && objetoSave.id > 0) {
       return this.update(objetoSave);
     } else {
-      return this.http.post(`${this.apiUrl}/add.json`, objetoSave);
+      return this.http.post(`${this.apiUrl}`, objetoSave);
     }
   }
   update(objetoUpdate: any): Observable<any> {
-    const url = `${this.apiUrl}/edit/${objetoUpdate.id}.json`;
+    const url = `${this.apiUrl}/${objetoUpdate.id}`;
     return this.http.put(url, objetoUpdate);
   }
 
   remove(id: number): Observable<any> {
-    const url = `${this.apiUrl}/delete/${id}.json`;
+    const url = `${this.apiUrl}/${id}`;
     return this.http.delete(url);
   }
 }

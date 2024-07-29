@@ -1,4 +1,4 @@
-import { CommonModule, NgStyle } from '@angular/common';
+import { CommonModule, NgFor, NgIf, NgStyle } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -6,12 +6,14 @@ import { ButtonDirective, ModalComponent, ModalHeaderComponent, ModalTitleDirect
 import {ProjetosFormComponent} from './projetos-form/projetos-form.component';
 import {ExigenciaService} from '../../services/exigencia.service';
 import {PaginacaoEnum} from '../../enums/paginacao.enum';
+import { IconDirective } from '@coreui/icons-angular';
+import { NgxPaginationModule } from 'ngx-pagination';
 @Component({
   selector: 'app-projetos',
   standalone: true,
   templateUrl: './projetos.component.html',
   styleUrl: './projetos.component.scss',
-  imports: [ProjetosFormComponent, CommonModule, RouterLink, BadgeComponent,  
+  imports: [NgIf, NgFor,IconDirective ,ProjetosFormComponent, CommonModule, RouterLink, BadgeComponent,  
     CardBodyComponent,
     CardComponent,
     CardFooterComponent,
@@ -22,7 +24,8 @@ import {PaginacaoEnum} from '../../enums/paginacao.enum';
     TableDirective,
     PaginationComponent,
     RowComponent, ColComponent,
-    FormFloatingDirective, FormControlDirective, FormLabelDirective, ReactiveFormsModule, FormsModule, FormDirective, NgStyle, FormSelectDirective, GutterDirective
+    FormFloatingDirective, FormControlDirective, FormLabelDirective, ReactiveFormsModule, FormsModule, FormDirective, NgStyle, FormSelectDirective, GutterDirective,
+    NgxPaginationModule
   ]
 })
 export class ProjetosComponent {
@@ -34,7 +37,7 @@ export class ProjetosComponent {
   buscaForm!: FormGroup;
   removeId: number | undefined;
   paginacaoEnum =  PaginacaoEnum;
-  exigencias = [{id:1, nome: "teste", ativo:1},{id:2, nome: "teste efr wq eqwr wqrqrr", ativo:1}];
+  exigencias: any;
   modalAdd = false;
   public visible = false;
   constructor(private formBuilder: FormBuilder, private exigenciaService: ExigenciaService) {
@@ -53,15 +56,16 @@ export class ProjetosComponent {
     this.removeId = id;
   }
   onTableDataChange(event:any){
-
+    this.p = event;
+    this.buscar(event);
   }
   remover(){
     this.removeId = undefined;
   }
 
   buscar(page: any = 1) {
-    this.exigenciaService.get({ limit: this.paginacaoEnum.Limit, page: page, ...this.buscaForm.value }).subscribe(data => {
-      this.bancos = data;
+    this.exigenciaService.get({ limit: this.paginacaoEnum.Limit, pageNumber: page, ...this.buscaForm.value }).subscribe(data => {
+      this.exigencias = data;
     });
   }
   closeAdd(){

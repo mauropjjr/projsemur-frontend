@@ -26,23 +26,30 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of exigencias">
-                    <th scope="row">{{item.id}}</th>
-                    <td scope="row">{{item.nome}}</td>
-                    <td scope="row"><c-badge [color]="item.ativo ? 'success' : 'danger'">{{item.ativo ? 'Sim' : 'Não'}}</c-badge></td>
-                    <td>
-                        <input cButton class="me-1" size="sm" color="primary" type="button" value="Editar" (click)="modalAdd=true">
-                        <input cButton class="me-1" size="sm" color="danger" type="button" value="Remover"
-                        (click)="openRemove(item.id)">
-                    </td>
-                </tr>
+                @for (item of exigencias.items | paginate: { itemsPerPage: paginacaoEnum.Limit, currentPage: p, totalItems: exigencias.totalCount }; track $index;) {
+                    <tr >
+                        <th>{{item.id}}</th>
+                        <td>{{item.nome}}</td>
+                        <td scope="row"><c-badge [color]="item.ativo ? 'success' : 'danger'">{{item.ativo ? 'Sim' : 'Não'}}</c-badge></td>
+                        <td scope="row" nowrap>
+                            <button cButton class="me-1" size="sm" color="primary" type="button" value="Editar" (click)="modalAdd=true"><svg cIcon name="cil-pen" [title]="'Editar'" size="1xl"></svg></button>
+                            <button cButton class="me-1" size="sm" color="danger" type="button" value="Remover"
+                            (click)="openRemove(item.id)"><svg cIcon name="cil-trash" [title]="'Excluir'" size="1xl"></svg></button>
+                        </td>
+                    </tr>
+                }@empty {
+                    <tr>
+                        <td colspan="4">Nenhum registro encontrado</td>
+                    </tr>
+                }
+               
 
             </tbody>
         </table>
         <div class="d-flex justify-content-center">
-            <!-- <pagination-controls previousLabel="Anterior" nextLabel="Proximo"
+            <pagination-controls previousLabel="Anterior" nextLabel="Proximo"
             (pageChange)="onTableDataChange($event)">
-            </pagination-controls> -->
+            </pagination-controls> 
         </div>
     </c-card-body>
   </c-card>
