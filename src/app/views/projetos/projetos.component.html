@@ -21,16 +21,17 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nome</th>
-                    <th scope="col">Ativo</th>
+                    <th scope="col">Ordem</th>
                     <th scope="col">Ações</th>
                 </tr>
             </thead>
             <tbody>
-                @for (item of exigencias.items | paginate: { itemsPerPage: paginacaoEnum.Limit, currentPage: p, totalItems: exigencias.totalCount }; track $index;) {
+                @for (item of exigencias?.items | paginate: { itemsPerPage: paginacaoEnum.Limit, currentPage: p, totalItems: exigencias.totalCount }; track $index;) {
                     <tr >
                         <th>{{item.id}}</th>
                         <td>{{item.nome}}</td>
-                        <td scope="row"><c-badge [color]="item.ativo ? 'success' : 'danger'">{{item.ativo ? 'Sim' : 'Não'}}</c-badge></td>
+                        <!-- <td scope="row"><c-badge [color]="item.ativo ? 'success' : 'danger'">{{item.ativo ? 'Sim' : 'Não'}}</c-badge></td> -->
+                         <td>{{item.ordem}}</td>
                         <td scope="row" nowrap>
                             <button cButton class="me-1" size="sm" color="primary" type="button" value="Editar" (click)="modalAdd=true"><svg cIcon name="cil-pen" [title]="'Editar'" size="1xl"></svg></button>
                             <button cButton class="me-1" size="sm" color="danger" type="button" value="Remover"
@@ -78,7 +79,7 @@
     </c-modal-header>
     <c-modal-body><app-projetos-form (fechar)="closeAdd()"></app-projetos-form></c-modal-body>
     <c-modal-footer>
-        <button (click)="modalAdd=false; projetosFormComponent.onReset()" cButton color="secondary">
+        <button (click)="projetosFormComponent.onReset()" cButton color="secondary">
             Cancelar
           </button>
       <button cButton color="primary" (click)="projetosFormComponent.onSubmit()">Salvar</button>

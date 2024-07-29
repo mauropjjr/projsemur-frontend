@@ -9,6 +9,7 @@ import {PaginacaoEnum} from '../../enums/paginacao.enum';
 import { IconDirective } from '@coreui/icons-angular';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ToastrService } from 'ngx-toastr';
+import { ControlListErrorMessagesComponent} from '../../components/control-list-error-messages/control-list-error-messages.component';
 @Component({
   selector: 'app-projetos',
   standalone: true,
@@ -26,7 +27,8 @@ import { ToastrService } from 'ngx-toastr';
     PaginationComponent,
     RowComponent, ColComponent,
     FormFloatingDirective, FormControlDirective, FormLabelDirective, ReactiveFormsModule, FormsModule, FormDirective, NgStyle, FormSelectDirective, GutterDirective,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ControlListErrorMessagesComponent
   ]
 })
 export class ProjetosComponent {
