@@ -55,7 +55,7 @@
   </c-card>
 
 
-  <c-modal #modal backdrop="static" id="staticBackdropModal" [visible]="removeId != null"  >
+  <c-modal #modal backdrop="static" id="staticBackdropModal" [visible]="removeId != undefined"  >
     <c-modal-header>
       <h5 cModalTitle>Confirme</h5>
       <button (click)="removeId=undefined" cButtonClose></button>

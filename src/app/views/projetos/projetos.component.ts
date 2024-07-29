@@ -8,6 +8,7 @@ import {ExigenciaService} from '../../services/exigencia.service';
 import {PaginacaoEnum} from '../../enums/paginacao.enum';
 import { IconDirective } from '@coreui/icons-angular';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-projetos',
   standalone: true,
@@ -40,7 +41,7 @@ export class ProjetosComponent {
   exigencias: any;
   modalAdd = false;
   public visible = false;
-  constructor(private formBuilder: FormBuilder, private exigenciaService: ExigenciaService) {
+  constructor(private formBuilder: FormBuilder, private exigenciaService: ExigenciaService, private toastr: ToastrService,) {
     this.createForm();
     this.buscar();
   } 
@@ -56,14 +57,18 @@ export class ProjetosComponent {
     this.removeId = id;
   }
   onTableDataChange(event:any){
-    this.p = event;
     this.buscar(event);
   }
   remover(){
-    this.removeId = undefined;
+    this.exigenciaService.remove(Number(this.removeId)).subscribe(() => {
+      this.toastr.success('Removido com sucesso!', 'Sucesso');
+      this.removeId =  undefined;
+      this.buscar(1);
+    });
   }
 
   buscar(page: any = 1) {
+    this.p = page;
     this.exigenciaService.get({ limit: this.paginacaoEnum.Limit, pageNumber: page, ...this.buscaForm.value }).subscribe(data => {
       this.exigencias = data;
     });
