@@ -6,15 +6,18 @@ import { ButtonDirective, ModalComponent, ModalHeaderComponent, ModalTitleDirect
 import {ProjetosFormComponent} from './projetos-form/projetos-form.component';
 import {ExigenciaService} from '../../services/exigencia.service';
 import {PaginacaoEnum} from '../../enums/paginacao.enum';
-import { IconDirective } from '@coreui/icons-angular';
+import { IconDirective, IconSetService } from '@coreui/icons-angular';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ToastrService } from 'ngx-toastr';
 import { ControlListErrorMessagesComponent} from '../../components/control-list-error-messages/control-list-error-messages.component';
+import {FloatingButtonComponent} from '../../components/floating-button/floating-button.component';
+import { freeSet } from '@coreui/icons';
 @Component({
   selector: 'app-projetos',
   standalone: true,
   templateUrl: './projetos.component.html',
   styleUrl: './projetos.component.scss',
+  providers: [IconSetService],
   imports: [NgIf, NgFor,IconDirective ,ProjetosFormComponent, CommonModule, RouterLink, BadgeComponent,  
     CardBodyComponent,
     CardComponent,
@@ -28,7 +31,8 @@ import { ControlListErrorMessagesComponent} from '../../components/control-list-
     RowComponent, ColComponent,
     FormFloatingDirective, FormControlDirective, FormLabelDirective, ReactiveFormsModule, FormsModule, FormDirective, NgStyle, FormSelectDirective, GutterDirective,
     NgxPaginationModule,
-    ControlListErrorMessagesComponent
+    ControlListErrorMessagesComponent,
+    FloatingButtonComponent
   ]
 })
 export class ProjetosComponent {
@@ -43,7 +47,8 @@ export class ProjetosComponent {
   exigencias: any;
   modalAdd = false;
   public visible = false;
-  constructor(private formBuilder: FormBuilder, private exigenciaService: ExigenciaService, private toastr: ToastrService,) {
+  constructor(private formBuilder: FormBuilder, private exigenciaService: ExigenciaService, private toastr: ToastrService,public iconSet: IconSetService) {
+    iconSet.icons = { ...freeSet};
     this.createForm();
     this.buscar();
   } 
@@ -81,7 +86,7 @@ export class ProjetosComponent {
   }
   closeAdd(){
     this.modalAdd = false;
-    this.buscar(event);
+    this.buscar(1);
   }
 
 }

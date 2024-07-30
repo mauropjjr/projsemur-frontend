@@ -1,6 +1,8 @@
 <div class="c-float-button" [ngClass]="{'top': vertical === 'top', 'bottom': vertical === 'bottom', 'start': horizontal === 'start', 'end': horizontal === 'end'}">
-    <button cButton class="c-float-button__main btn" *ngIf="tipoPerfil != 'Credor'" [class]="getButtonColorStyle()">
-      <i class="c-icon cil-plus"></i>
+    <button cButton class="c-float-button__main btn" [class]="getButtonColorStyle()">
+      <svg cIcon [name]="'cil-plus'" [title]="'Novo'" size="3xl"></svg>
+      <i class="c-icon cil-pencil"></i>
+      
     </button>
     <div cButton class="c-float-button__list">
       <button class="c-float-button__item btn" [class]="getButtonColorStyle()">

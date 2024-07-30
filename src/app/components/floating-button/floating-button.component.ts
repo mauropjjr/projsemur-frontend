@@ -1,15 +1,25 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { freeSet } from '@coreui/icons';
+import { IconDirective, IconSetService } from '@coreui/icons-angular';
 //import { SessaoService } from 'src/app/services/sessao.service';
 
 @Component({
   selector: 'app-floating-button',
+  standalone: true,
+  providers: [IconSetService],
   templateUrl: './floating-button.component.html',
-  styleUrls: ['./floating-button.component.scss']
+  styleUrls: ['./floating-button.component.scss'],
+  imports: [CommonModule, IconDirective],
 })
 export class FloatingButtonComponent {
 @Input() vertical: 'top' | 'bottom' = 'top';
 @Input() horizontal: 'start' | 'end' = 'end';
 @Input() buttonColor: string = 'primary'; // Valor padrão é 'primary'
+
+constructor(public iconSet: IconSetService) {
+  iconSet.icons = { ...freeSet};
+}
 
 tipoPerfil: string = '';
 

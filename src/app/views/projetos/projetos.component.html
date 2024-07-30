@@ -35,7 +35,7 @@
                         <td scope="row" nowrap>
                             <button cButton class="me-1" size="sm" color="primary" type="button" value="Editar" (click)="editarItem(item)"><svg cIcon name="cil-pen" [title]="'Editar'" size="1xl"></svg></button>
                             <button cButton class="me-1" size="sm" color="danger" type="button" value="Remover"
-                            (click)="openRemove(item.id)"><svg cIcon name="cil-trash" [title]="'Excluir'" size="1xl"></svg></button>
+                            (click)="openRemove(item.id)"><svg cIcon name="cil-x" [title]="'Excluir'" size="1xl"></svg></button>
                         </td>
                     </tr>
                 }@empty {
@@ -88,4 +88,4 @@
     </c-modal-footer>
   </c-modal>
 
-  <!-- <app-floating-button [routerLink]="['save']"></app-floating-button> -->
+  <app-floating-button  (click)="modalAdd = true"></app-floating-button> 
