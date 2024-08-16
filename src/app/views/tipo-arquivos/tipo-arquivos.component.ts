@@ -3,8 +3,8 @@ import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ButtonDirective, ModalComponent, ModalHeaderComponent, ModalTitleDirective, ThemeDirective, ButtonCloseDirective, ModalBodyComponent, ModalFooterComponent, PageItemDirective, PageLinkDirective, PaginationComponent, BadgeComponent, CardBodyComponent, CardComponent, CardFooterComponent, CardGroupComponent, CardHeaderComponent, TableDirective, RowComponent, ColComponent, FormControlDirective, FormDirective, FormFloatingDirective, FormLabelDirective, FormSelectDirective, GutterDirective } from '@coreui/angular';
-import {ProjetosFormComponent} from './projetos-form/projetos-form.component';
-import {ExigenciaService} from '../../services/exigencia.service';
+import {TipoArquivosFormComponent} from './tipo-arquivos-form/tipo-arquivos-form.component';
+import {TipoArquivoService} from '../../services/tipo-arquivo.service';
 import {PaginacaoEnum} from '../../enums/paginacao.enum';
 import { IconDirective, IconSetService } from '@coreui/icons-angular';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -13,12 +13,13 @@ import { ControlListErrorMessagesComponent} from '../../components/control-list-
 import {FloatingButtonComponent} from '../../components/floating-button/floating-button.component';
 import { freeSet } from '@coreui/icons';
 @Component({
-  selector: 'app-projetos',
+  selector: 'app-tipo-arquivos',
   standalone: true,
-  templateUrl: './projetos.component.html',
-  styleUrl: './projetos.component.scss',
+  templateUrl: './tipo-arquivos.component.html',
+  styleUrl: './tipo-arquivos.component.scss',
   providers: [IconSetService],
-  imports: [NgIf, NgFor,IconDirective ,ProjetosFormComponent, CommonModule, RouterLink, BadgeComponent,  
+  imports: [NgIf, NgFor,IconDirective ,TipoArquivosFormComponent
+    , CommonModule, RouterLink, BadgeComponent,  
     CardBodyComponent,
     CardComponent,
     CardFooterComponent,
@@ -35,8 +36,8 @@ import { freeSet } from '@coreui/icons';
     FloatingButtonComponent
   ]
 })
-export class ProjetosComponent {
-  @ViewChild(ProjetosFormComponent) projetosFormComponent!: ProjetosFormComponent;
+export class TipoArquivosComponent {
+  @ViewChild(TipoArquivosFormComponent) tipoArquivosFormComponent!: TipoArquivosFormComponent;
 
   p = 1;
   total: any;
@@ -44,10 +45,10 @@ export class ProjetosComponent {
   removeId: number | undefined;
   editar: any;
   paginacaoEnum =  PaginacaoEnum;
-  exigencias: any;
+  tipoArquivos: any;
   modalAdd = false;
   public visible = false;
-  constructor(private formBuilder: FormBuilder, private exigenciaService: ExigenciaService, private toastr: ToastrService,public iconSet: IconSetService) {
+  constructor(private formBuilder: FormBuilder, private tipoArquivoService: TipoArquivoService, private toastr: ToastrService,public iconSet: IconSetService) {
     iconSet.icons = { ...freeSet};
     this.createForm();
     this.buscar();
@@ -67,7 +68,7 @@ export class ProjetosComponent {
     this.buscar(event);
   }
   remover(){
-    this.exigenciaService.remove(Number(this.removeId)).subscribe(() => {
+    this.tipoArquivoService.remove(Number(this.removeId)).subscribe(() => {
       this.toastr.success('Removido com sucesso!', 'Sucesso');
       this.removeId =  undefined;
       this.buscar(1);
@@ -76,8 +77,8 @@ export class ProjetosComponent {
 
   buscar(page: any = 1) {
     this.p = page;
-    this.exigenciaService.get({ pageSize: this.paginacaoEnum.Limit, pageNumber: page, ...this.buscaForm.value }).subscribe(data => {
-      this.exigencias = data;
+    this.tipoArquivoService.get({ pageSize: this.paginacaoEnum.Limit, pageNumber: page, ...this.buscaForm.value }).subscribe(data => {
+      this.tipoArquivos = data;
     });
   }
   editarItem(item: any){

@@ -20,18 +20,20 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Ordem</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Extensão</th>
+                    <th scope="col">Ativo</th>
                     <th scope="col">Ações</th>
                 </tr>
             </thead>
             <tbody>
-                @for (item of exigencias?.items | paginate: { itemsPerPage: paginacaoEnum.Limit, currentPage: p, totalItems: exigencias?.totalCount || 0 }; track $index;) {
+                @for (item of tipoArquivos?.items | paginate: { itemsPerPage: paginacaoEnum.Limit, currentPage: p, totalItems: tipoArquivos?.totalCount || 0 }; track $index;) {
                     <tr >
                         <th>{{item.id}}</th>
                         <td>{{item.nome}}</td>
                         <!-- <td scope="row"><c-badge [color]="item.ativo ? 'success' : 'danger'">{{item.ativo ? 'Sim' : 'Não'}}</c-badge></td> -->
-                         <td>{{item.ordem}}</td>
+                         <td>{{item.extension}}</td>
+                         <td>{{item.ativo}}</td>
                         <td scope="row" nowrap>
                             <button cButton class="me-1" size="sm" color="primary" type="button" value="Editar" (click)="editarItem(item)"><svg cIcon name="cil-pen" [title]="'Editar'" size="1xl"></svg></button>
                             <button cButton class="me-1" size="sm" color="danger" type="button" value="Remover"
@@ -74,15 +76,15 @@
  
   <c-modal #modal backdrop="static" id="modaladd" [visible]="modalAdd" size="xl"  >
     <c-modal-header>
-      <h5 cModalTitle>Projetos</h5>
+      <h5 cModalTitle>Tipo de Arquivo</h5>
       <button (click)="modalAdd=false" cButtonClose></button>
     </c-modal-header>
-    <c-modal-body><app-projetos-form (fechar)="closeAdd()" [editar]="editar"></app-projetos-form></c-modal-body>
+    <c-modal-body><app-tipo-arquivos-form (fechar)="closeAdd()" [editar]="editar"></app-tipo-arquivos-form></c-modal-body>
     <c-modal-footer>
-        <button (click)="projetosFormComponent.onReset()" cButton color="secondary">
+        <button (click)="tipoArquivosFormComponent.onReset()" cButton color="secondary">
             Cancelar
           </button>
-      <button cButton color="primary" (click)="projetosFormComponent.onSubmit()">Salvar</button>
+      <button cButton color="primary" (click)="tipoArquivosFormComponent.onSubmit()">Salvar</button>
 
 
     </c-modal-footer>

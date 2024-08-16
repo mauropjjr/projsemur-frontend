@@ -74,15 +74,15 @@
  
   <c-modal #modal backdrop="static" id="modaladd" [visible]="modalAdd" size="xl"  >
     <c-modal-header>
-      <h5 cModalTitle>Projetos</h5>
+      <h5 cModalTitle>Exigência</h5>
       <button (click)="modalAdd=false" cButtonClose></button>
     </c-modal-header>
-    <c-modal-body><app-projetos-form (fechar)="closeAdd()" [editar]="editar"></app-projetos-form></c-modal-body>
+    <c-modal-body><app-exigencias-form (fechar)="closeAdd()" [editar]="editar"></app-exigencias-form></c-modal-body>
     <c-modal-footer>
-        <button (click)="projetosFormComponent.onReset()" cButton color="secondary">
+        <button (click)="exigenciasFormComponent.onReset()" cButton color="secondary">
             Cancelar
           </button>
-      <button cButton color="primary" (click)="projetosFormComponent.onSubmit()">Salvar</button>
+      <button cButton color="primary" (click)="exigenciasFormComponent.onSubmit()">Salvar</button>
 
 
     </c-modal-footer>

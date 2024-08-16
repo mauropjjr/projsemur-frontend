@@ -26,6 +26,20 @@ export const routes: Routes = [
         }
       },
       {
+        path: 'exigencias',
+        loadComponent: () => import('./views/exigencias/exigencias.component').then(m => m.ExigenciasComponent),
+        data: {
+          title: 'Exigências'
+        }
+      },
+      {
+        path: 'tipo-arquivos',
+        loadComponent: () => import('./views/tipo-arquivos/tipo-arquivos.component').then(m => m.TipoArquivosComponent),
+        data: {
+          title: 'Tipo Arquivos'
+        }
+      },
+      {
         path: 'theme',
         loadChildren: () => import('./views/theme/routes').then((m) => m.routes)
       },

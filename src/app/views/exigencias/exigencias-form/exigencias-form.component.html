@@ -1,0 +1,67 @@
+<c-card>
+  <c-card-body>
+    <app-control-list-error-messages [errors]="errors"></app-control-list-error-messages>
+    <form cForm [formGroup]="form" novalidate (ngSubmit)="onSubmit()">
+      <c-row [gutter]="2">
+        <c-col [sm]="12" [md]="12" [xl]="12">
+          <div cFormFloating>
+            <input cFormControl formControlName="nome" placeholder="nome" autocomplete="off" [autofocus]="true" [valid]="
+            this.errors && this.errors['nome'] != null ? false 
+                    :getForms['nome'].touched && getForms['nome'].valid
+                    ? true
+                    : (submitted || getForms['nome'].touched) &&
+                      getForms['nome'].invalid
+                    ? false
+                    : undefined
+                " />
+            @if(submitted || getForms['nome'].invalid){
+              <c-form-feedback
+              [valid]="!(submitted || getForms['nome'].invalid)">
+              <ng-container *ngIf="getForms['nome'].errors as errors">
+                <div>Nome inválido</div>
+              </ng-container>
+            </c-form-feedback>
+            }
+            
+            @if (this.errors && this.errors['nome'] != null) {
+              <c-form-feedback [valid]="false">
+                @for (erro of this.errors['nome']; track $index) {
+                <ng-container>
+                  <div>{{erro}}</div>
+                </ng-container>
+                }
+              </c-form-feedback>
+              }
+            <label cLabel for="floatingSelectGrid">Nome</label>
+          </div>
+        </c-col>
+        <c-col [sm]="12" [md]="12" [xl]="12">
+          <div cFormFloating>
+            <input cFormControl formControlName="ordem" placeholder="ordem" autocomplete="off" [autofocus]="true" />
+            <label cLabel for="floatingSelectGrid">Ordem</label>
+          </div>
+        </c-col>
+        <!-- <c-col [sm]="12" [md]="12" [xl]="12">
+            <c-form-check [switch]="true">
+              <input cFormCheckInput type="checkbox" formControlName="ativo" />
+              <label cFormCheckLabel>Ativo</label>
+            </c-form-check>
+          </c-col> -->
+      </c-row>
+
+      <!-- <hr />
+        <c-button-group>
+          <button cButton type="submit" [tabindex]="'0'">Salvar</button>
+          <button
+            cButton
+            color="danger"
+            type="reset"
+            (click)="onReset()"
+            [tabindex]="'0'"
+          >
+            Limpar
+          </button>
+        </c-button-group> -->
+    </form>
+  </c-card-body>
+</c-card>

@@ -3,7 +3,7 @@ import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ButtonDirective, ModalComponent, ModalHeaderComponent, ModalTitleDirective, ThemeDirective, ButtonCloseDirective, ModalBodyComponent, ModalFooterComponent, PageItemDirective, PageLinkDirective, PaginationComponent, BadgeComponent, CardBodyComponent, CardComponent, CardFooterComponent, CardGroupComponent, CardHeaderComponent, TableDirective, RowComponent, ColComponent, FormControlDirective, FormDirective, FormFloatingDirective, FormLabelDirective, FormSelectDirective, GutterDirective } from '@coreui/angular';
-import {ProjetosFormComponent} from './projetos-form/projetos-form.component';
+import {exigenciasFormComponent} from './exigencias-form/exigencias-form.component';
 import {ExigenciaService} from '../../services/exigencia.service';
 import {PaginacaoEnum} from '../../enums/paginacao.enum';
 import { IconDirective, IconSetService } from '@coreui/icons-angular';
@@ -13,12 +13,12 @@ import { ControlListErrorMessagesComponent} from '../../components/control-list-
 import {FloatingButtonComponent} from '../../components/floating-button/floating-button.component';
 import { freeSet } from '@coreui/icons';
 @Component({
-  selector: 'app-projetos',
+  selector: 'app-exigencias',
   standalone: true,
-  templateUrl: './projetos.component.html',
-  styleUrl: './projetos.component.scss',
+  templateUrl: './exigencias.component.html',
+  styleUrl: './exigencias.component.scss',
   providers: [IconSetService],
-  imports: [NgIf, NgFor,IconDirective ,ProjetosFormComponent, CommonModule, RouterLink, BadgeComponent,  
+  imports: [NgIf, NgFor,IconDirective ,exigenciasFormComponent, CommonModule, RouterLink, BadgeComponent,  
     CardBodyComponent,
     CardComponent,
     CardFooterComponent,
@@ -35,8 +35,8 @@ import { freeSet } from '@coreui/icons';
     FloatingButtonComponent
   ]
 })
-export class ProjetosComponent {
-  @ViewChild(ProjetosFormComponent) projetosFormComponent!: ProjetosFormComponent;
+export class ExigenciasComponent {
+  @ViewChild(exigenciasFormComponent) exigenciasFormComponent!: exigenciasFormComponent;
 
   p = 1;
   total: any;
