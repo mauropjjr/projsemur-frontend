@@ -40,6 +40,13 @@ export const routes: Routes = [
         }
       },
       {
+        path: 'codificacoes',
+        loadComponent: () => import('./views/codificacoes/codificacoes.component').then(m => m.CodificacoesComponent),
+        data: {
+          title: 'Exigências'
+        }
+      },
+      {
         path: 'theme',
         loadChildren: () => import('./views/theme/routes').then((m) => m.routes)
       },

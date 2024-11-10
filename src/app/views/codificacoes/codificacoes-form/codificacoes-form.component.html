@@ -1,0 +1,119 @@
+<c-card>
+  <c-card-body>
+    <app-control-list-error-messages [errors]="errors"></app-control-list-error-messages>
+    <form cForm [formGroup]="form" novalidate (ngSubmit)="onSubmit()">
+      <c-row [gutter]="2">
+        <c-col [sm]="12" [md]="12" [xl]="12">
+          <div cFormFloating>
+            <input cFormControl formControlName="nome" placeholder="nome" autocomplete="off" [autofocus]="true" [valid]="
+            this.errors && this.errors['nome'] != null ? false 
+                    :getForms['nome'].touched && getForms['nome'].valid
+                    ? true
+                    : (submitted || getForms['nome'].touched) &&
+                      getForms['nome'].invalid
+                    ? false
+                    : undefined
+                " />
+            @if(submitted || getForms['nome'].invalid){
+              <c-form-feedback
+              [valid]="!(submitted || getForms['nome'].invalid)">
+              <ng-container *ngIf="getForms['nome'].errors as errors">
+                <div>Nome inválido</div>
+              </ng-container>
+            </c-form-feedback>
+            }
+            
+            @if (this.errors && this.errors['nome'] != null) {
+              <c-form-feedback [valid]="false">
+                @for (erro of this.errors['nome']; track $index) {
+                <ng-container>
+                  <div>{{erro}}</div>
+                </ng-container>
+                }
+              </c-form-feedback>
+              }
+            <label cLabel for="floatingSelectGrid">Nome</label>
+          </div>
+        </c-col>
+        <c-col [sm]="12" [md]="6" [xl]="6">
+          <div cFormFloating>
+            <input type="number" cFormControl formControlName="fatoratual" placeholder="fatoratual" autocomplete="off" [autofocus]="true" [valid]="
+            this.errors && this.errors['fatoratual'] != null ? false 
+                    :getForms['fatoratual'].touched && getForms['fatoratual'].valid
+                    ? true
+                    : (submitted || getForms['fatoratual'].touched) &&
+                      getForms['fatoratual'].invalid
+                    ? false
+                    : undefined
+                " />
+            @if(submitted || getForms['fatoratual'].invalid){
+              <c-form-feedback
+              [valid]="!(submitted || getForms['fatoratual'].invalid)">
+              <ng-container *ngIf="getForms['fatoratual'].errors as errors">
+                <div>Fator Atual inválido</div>
+              </ng-container>
+            </c-form-feedback>
+            }
+            
+            @if (this.errors && this.errors['fatoratual'] != null) {
+              <c-form-feedback [valid]="false">
+                @for (erro of this.errors['fatoratual']; track $index) {
+                <ng-container>
+                  <div>{{erro}}</div>
+                </ng-container>
+                }
+              </c-form-feedback>
+              }
+            <label cLabel for="floatingSelectGrid">Fator Atual</label>
+          </div>
+        </c-col>
+        <c-col [sm]="12" [md]="6" [xl]="6">
+          <div cFormFloating>
+            <input type="number" cFormControl formControlName="pontobase" placeholder="pontobase" autocomplete="off" [autofocus]="true" [valid]="
+            this.errors && this.errors['pontobase'] != null ? false 
+                    :getForms['pontobase'].touched && getForms['pontobase'].valid
+                    ? true
+                    : (submitted || getForms['pontobase'].touched) &&
+                      getForms['pontobase'].invalid
+                    ? false
+                    : undefined
+                " />
+            @if(submitted || getForms['pontobase'].invalid){
+              <c-form-feedback
+              [valid]="!(submitted || getForms['pontobase'].invalid)">
+              <ng-container *ngIf="getForms['pontobase'].errors as errors">
+                <div>Fator Atual inválido</div>
+              </ng-container>
+            </c-form-feedback>
+            }
+            
+            @if (this.errors && this.errors['pontobase'] != null) {
+              <c-form-feedback [valid]="false">
+                @for (erro of this.errors['pontobase']; track $index) {
+                <ng-container>
+                  <div>{{erro}}</div>
+                </ng-container>
+                }
+              </c-form-feedback>
+              }
+            <label cLabel for="floatingSelectGrid">Ponto Base</label>
+          </div>
+        </c-col>
+      </c-row>
+
+      <!-- <hr />
+        <c-button-group>
+          <button cButton type="submit" [tabindex]="'0'">Salvar</button>
+          <button
+            cButton
+            color="danger"
+            type="reset"
+            (click)="onReset()"
+            [tabindex]="'0'"
+          >
+            Limpar
+          </button>
+        </c-button-group> -->
+    </form>
+  </c-card-body>
+</c-card>

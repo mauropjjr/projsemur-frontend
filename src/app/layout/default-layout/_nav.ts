@@ -37,7 +37,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Codificações',
-    url: '/',
+    url: '/codificacoes',
     iconComponent: { name: 'cil-drop' }
   },
   {
