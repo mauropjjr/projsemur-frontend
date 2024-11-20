@@ -47,6 +47,13 @@ export const routes: Routes = [
         }
       },
       {
+        path: 'analistas',
+        loadComponent: () => import('./views/analistas/analistas.component').then(m => m.AnalistasComponent),
+        data: {
+          title: 'Analistas'
+        }
+      },
+      {
         path: 'theme',
         loadChildren: () => import('./views/theme/routes').then((m) => m.routes)
       },

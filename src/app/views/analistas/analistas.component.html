@@ -1,0 +1,94 @@
+<c-card class="mb-3">
+    <c-card-header>
+        <form cForm [formGroup]="buscaForm" novalidate>
+            <c-row [gutter]="2">
+                <c-col [sm]="4" [md]="2" [xl]="4">
+                    <input cFormControl id="nome" formControlName="nome" placeholder="Filtrar por nome"
+                        autocomplete="off" />
+                </c-col>
+                <c-col [sm]="4" [md]="2" [xl]="2">
+                    <input cButton class="me-1" type="button" value="Pesquisar" (click)="buscar()">
+                </c-col>
+            </c-row>
+        </form>
+    </c-card-header>
+
+    <c-card-body>
+        <table [striped]="true" cTable hover>
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Legenda</th>
+                    <th scope="col">Mostrar</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (item of analistas?.items | paginate: { itemsPerPage: paginacaoEnum.Limit, currentPage: p,
+                totalItems: analistas?.totalCount || 0 }; track $index;) {
+                <tr>
+                    <th>{{item.id}}</th>
+                    <td>{{item.nome}}</td>
+                    <td>{{item.legenda}}</td>
+                    <td scope="row"><c-badge [color]="item.flagativo ==1 ? 'success' : 'danger'">{{item.flagativo ? 'Sim' :
+                            'Não'}}</c-badge></td>
+                    <td scope="row" nowrap>
+                        <button cButton class="me-1" size="sm" color="primary" type="button" value="Editar"
+                            (click)="editarItem(item)"><svg cIcon name="cil-pen" [title]="'Editar'"
+                                size="1xl"></svg></button>
+                        <button cButton class="me-1" size="sm" color="danger" type="button" value="Remover"
+                            (click)="openRemove(item.id)"><svg cIcon name="cil-x" [title]="'Excluir'"
+                                size="1xl"></svg></button>
+                    </td>
+                </tr>
+                }@empty {
+                <tr>
+                    <td colspan="5">Nenhum registro encontrado</td>
+                </tr>
+                }
+
+
+            </tbody>
+        </table>
+        <div class="d-flex justify-content-center">
+            <pagination-controls previousLabel="Anterior" nextLabel="Proximo" (pageChange)="onTableDataChange($event)">
+            </pagination-controls>
+        </div>
+    </c-card-body>
+</c-card>
+
+
+<c-modal #modal backdrop="static" id="staticBackdropModal" [visible]="removeId != undefined">
+    <c-modal-header>
+        <h5 cModalTitle>Confirme</h5>
+        <button (click)="removeId=undefined" cButtonClose></button>
+    </c-modal-header>
+    <c-modal-body>Deseja realmente remover esse registro?</c-modal-body>
+    <c-modal-footer>
+        <button (click)="removeId=undefined" cButton color="secondary">
+            Cancelar
+        </button>
+        <button cButton color="primary" (click)="remover()">Confirmar</button>
+
+
+    </c-modal-footer>
+</c-modal>
+
+<c-modal #modal backdrop="static" id="modaladd" [visible]="modalAdd" size="xl">
+    <c-modal-header>
+        <h5 cModalTitle>Analista</h5>
+        <button (click)="modalAdd=false" cButtonClose></button>
+    </c-modal-header>
+    <c-modal-body><app-analistas-form (fechar)="closeAdd()" [editar]="editar"></app-analistas-form></c-modal-body>
+    <c-modal-footer>
+        <button (click)="analistasFormComponent.onReset()" cButton color="secondary">
+            Cancelar
+        </button>
+        <button cButton color="primary" (click)="analistasFormComponent.onSubmit()">Salvar</button>
+
+
+    </c-modal-footer>
+</c-modal>
+
+<app-floating-button (click)="modalAdd = true"></app-floating-button>
