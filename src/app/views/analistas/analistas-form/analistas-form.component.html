@@ -75,19 +75,48 @@
         </c-col>
       </c-row>
 
-      <!-- <hr />
-        <c-button-group>
-          <button cButton type="submit" [tabindex]="'0'">Salvar</button>
-          <button
-            cButton
-            color="danger"
-            type="reset"
-            (click)="onReset()"
-            [tabindex]="'0'"
-          >
-            Limpar
-          </button>
-        </c-button-group> -->
+
     </form>
   </c-card-body>
 </c-card>
+@if (remessas != null && remessas.length > 0) {
+  
+
+<c-card class="mb-3">
+  <c-card-header>
+    Lista de Remessas do Analista
+  </c-card-header>
+
+  <c-card-body>
+      <table [striped]="true" cTable hover>
+          <thead>
+              <tr>
+                  <th scope="col">Título</th>
+                  <th scope="col">Projeto</th>
+                  <th scope="col">Data</th>
+              </tr>
+          </thead>
+          <tbody>
+              @for (item of remessas; track $index;) {
+              <tr>
+                  <td>{{item.titulo}}</td>
+                  <td>{{item.projeto}} {{item.descricao}}</td>
+                  <td scope="row">{{item.data | date: 'dd/MM/yyyy HH:mm' }}</td>
+                 
+              </tr>
+              }@empty {
+              <tr>
+                  <td colspan="5">Nenhum registro encontrado</td>
+              </tr>
+              }
+
+
+          </tbody>
+      </table>
+      <!-- <div class="d-flex justify-content-center">
+          <pagination-controls previousLabel="Anterior" nextLabel="Proximo" (pageChange)="onTableDataChange($event)">
+          </pagination-controls>
+      </div> -->
+  </c-card-body>
+</c-card>
+}

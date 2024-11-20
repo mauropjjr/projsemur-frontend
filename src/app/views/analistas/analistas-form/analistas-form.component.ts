@@ -2,7 +2,7 @@ import { CommonModule, NgStyle } from '@angular/common';
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {  RouterLink } from '@angular/router';
-import { BadgeComponent, ButtonDirective, ButtonGroupComponent, CardBodyComponent, CardComponent, CardFooterComponent, CardGroupComponent, ColComponent, FormCheckComponent, FormCheckInputDirective, FormCheckLabelDirective, FormControlDirective, FormDirective, FormFeedbackComponent, FormFloatingDirective, FormLabelDirective, GutterDirective, RowComponent } from '@coreui/angular';
+import { BadgeComponent, ButtonDirective, ButtonGroupComponent, CardBodyComponent, CardComponent, CardFooterComponent, CardGroupComponent, CardHeaderComponent, ColComponent, FormCheckComponent, FormCheckInputDirective, FormCheckLabelDirective, FormControlDirective, FormDirective, FormFeedbackComponent, FormFloatingDirective, FormLabelDirective, GutterDirective, RowComponent, TableDirective } from '@coreui/angular';
 import {  ToastrService } from 'ngx-toastr';
 import { ControlListErrorMessagesComponent } from "../../../components/control-list-error-messages/control-list-error-messages.component";
 import { AnalistaService } from '../../../services/analista.service';
@@ -14,10 +14,12 @@ import { AnalistaService } from '../../../services/analista.service';
   imports: [CommonModule, RouterLink, BadgeComponent,
     RowComponent, ColComponent,
     GutterDirective,
+    CardHeaderComponent,
     CardBodyComponent,
     CardComponent,
     CardFooterComponent,
     CardGroupComponent,
+    TableDirective,
     ReactiveFormsModule, FormsModule, FormDirective, FormFloatingDirective, FormLabelDirective, FormControlDirective, FormFeedbackComponent,
     FormCheckComponent, FormCheckInputDirective, FormCheckLabelDirective, ButtonGroupComponent,
     ButtonDirective, ButtonDirective, NgStyle, ControlListErrorMessagesComponent],
@@ -28,6 +30,7 @@ export class AnalistasFormComponent implements OnChanges {
   form!: FormGroup;
   submitted = false;
   errors: any;
+  remessas: any[] = [];
   @Output() fechar: EventEmitter<any> = new EventEmitter();
   @Input() editar: any;
 
@@ -45,6 +48,9 @@ export class AnalistasFormComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (changes['editar'] && this.editar != null) {
       this.form.patchValue(this.editar);
+      this.analistaService.getId(this.editar.id).subscribe((data: any) => {
+        this.remessas = data?.remessas || [];
+      })
     }
   }
     get getForms() {
