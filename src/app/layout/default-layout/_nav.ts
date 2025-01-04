@@ -48,7 +48,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Área Receptora',
-    url: '/',
+    url: '/areas-receptoras',
     iconComponent: { name: 'cil-drop' }
   },
   {

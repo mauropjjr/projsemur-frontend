@@ -1,0 +1,357 @@
+<c-card>
+  <c-card-body>
+    <app-control-list-error-messages [errors]="errors"></app-control-list-error-messages>
+    <form cForm [formGroup]="form" novalidate (ngSubmit)="onSubmit()">
+      <c-row [gutter]="2">
+        <c-col [sm]="12" [md]="6" [xl]="2">
+          <div cFormFloating>
+            <select cSelect formControlName="tipo" placeholder="Tipo" [valid]="
+            this.errors && this.errors['tipo'] != null ? false 
+                    :getForms['tipo'].touched && getForms['tipo'].valid
+                    ? true
+                    : (submitted || getForms['tipo'].touched) &&
+                      getForms['tipo'].invalid
+                    ? false
+                    : undefined
+                ">
+              <option value="0">Ecoponto</option>
+              <option value="1">Ponto-Apoio</option>
+            </select>
+            @if(submitted || getForms['tipo'].invalid){
+              <c-form-feedback
+              [valid]="!(submitted || getForms['tipo'].invalid)">
+              <ng-container *ngIf="getForms['tipo'].errors as errors">
+                <div>Tipo inválido</div>
+              </ng-container>
+            </c-form-feedback>
+            }
+            
+            @if (this.errors && this.errors['tipo'] != null) {
+              <c-form-feedback [valid]="false">
+                @for (erro of this.errors['tipo']; track $index) {
+                <ng-container>
+                  <div>{{erro}}</div>
+                </ng-container>
+                }
+              </c-form-feedback>
+              }
+            <label cLabel for="floatingSelectGrid">Tipo</label>
+          </div>
+        </c-col>
+        <c-col [sm]="12" [md]="6" [xl]="7">
+          <div cFormFloating>
+            <input cFormControl formControlName="nome" placeholder="nome" autocomplete="off" [autofocus]="true" [valid]="
+            this.errors && this.errors['nome'] != null ? false 
+                    :getForms['nome'].touched && getForms['nome'].valid
+                    ? true
+                    : (submitted || getForms['nome'].touched) &&
+                      getForms['nome'].invalid
+                    ? false
+                    : undefined
+                " />
+            @if(submitted || getForms['nome'].invalid){
+              <c-form-feedback
+              [valid]="!(submitted || getForms['nome'].invalid)">
+              <ng-container *ngIf="getForms['nome'].errors as errors">
+                <div>Nome inválido</div>
+              </ng-container>
+            </c-form-feedback>
+            }
+            
+            @if (this.errors && this.errors['nome'] != null) {
+              <c-form-feedback [valid]="false">
+                @for (erro of this.errors['nome']; track $index) {
+                <ng-container>
+                  <div>{{erro}}</div>
+                </ng-container>
+                }
+              </c-form-feedback>
+              }
+            <label cLabel for="floatingSelectGrid">Nome</label>
+          </div>
+        </c-col>
+        <c-col [sm]="12" [md]="6" [xl]="3">
+          <div cFormFloating>
+            <input cFormControl formControlName="numerolicenca" placeholder="Número da Licença" autocomplete="off" [valid]="
+            this.errors && this.errors['numerolicenca'] != null ? false 
+                    :getForms['numerolicenca'].touched && getForms['numerolicenca'].valid
+                    ? true
+                    : (submitted || getForms['numerolicenca'].touched) &&
+                      getForms['numerolicenca'].invalid
+                    ? false
+                    : undefined
+                " />
+            @if(submitted || getForms['numerolicenca'].invalid){
+              <c-form-feedback
+              [valid]="!(submitted || getForms['numerolicenca'].invalid)">
+              <ng-container *ngIf="getForms['numerolicenca'].errors as errors">
+                <div>Número da Licença inválido</div>
+              </ng-container>
+            </c-form-feedback>
+            }
+            
+            @if (this.errors && this.errors['numerolicenca'] != null) {
+              <c-form-feedback [valid]="false">
+                @for (erro of this.errors['numerolicenca']; track $index) {
+                <ng-container>
+                  <div>{{erro}}</div>
+                </ng-container>
+                }
+              </c-form-feedback>
+              }
+            <label cLabel for="floatingSelectGrid">Número da Licença</label>
+          </div>
+        </c-col>
+
+
+        <c-col [sm]="12" [md]="6" [xl]="2">
+          <div cFormFloating>
+            <input cFormControl formControlName="regiao" placeholder="Região" [valid]="
+            this.errors && this.errors['regiao'] != null ? false 
+                    :getForms['regiao'].touched && getForms['regiao'].valid
+                    ? true
+                    : (submitted || getForms['regiao'].touched) &&
+                      getForms['regiao'].invalid
+                    ? false
+                    : undefined
+                "/>
+            @if(submitted || getForms['regiao'].invalid){
+              <c-form-feedback
+              [valid]="!(submitted || getForms['regiao'].invalid)">
+              <ng-container *ngIf="getForms['regiao'].errors as errors">
+                <div>Região inválida</div>
+              </ng-container>
+            </c-form-feedback>
+            }
+            
+            @if (this.errors && this.errors['regiao'] != null) {
+              <c-form-feedback [valid]="false">
+                @for (erro of this.errors['regiao']; track $index) {
+                <ng-container>
+                  <div>{{erro}}</div>
+                </ng-container>
+                }
+              </c-form-feedback>
+              }
+            <label cLabel for="floatingSelectGrid">Região</label>
+          </div>
+        </c-col>
+
+        <c-col [sm]="12" [md]="6" [xl]="6">
+          <div cFormFloating>
+            <input cFormControl formControlName="endereco" placeholder="Endereço" autocomplete="off" [valid]="
+            this.errors && this.errors['endereco'] != null ? false 
+                    :getForms['endereco'].touched && getForms['endereco'].valid
+                    ? true
+                    : (submitted || getForms['endereco'].touched) &&
+                      getForms['endereco'].invalid
+                    ? false
+                    : undefined
+                " />
+            @if(submitted || getForms['endereco'].invalid){
+              <c-form-feedback
+              [valid]="!(submitted || getForms['endereco'].invalid)">
+              <ng-container *ngIf="getForms['endereco'].errors as errors">
+                <div>Endereço inválido</div>
+              </ng-container>
+            </c-form-feedback>
+            }
+            
+            @if (this.errors && this.errors['endereco'] != null) {
+              <c-form-feedback [valid]="false">
+                @for (erro of this.errors['endereco']; track $index) {
+                <ng-container>
+                  <div>{{erro}}</div>
+                </ng-container>
+                }
+              </c-form-feedback>
+              }
+            <label cLabel for="floatingSelectGrid">Endereço</label>
+          </div>
+        </c-col>
+
+        <c-col [sm]="12" [md]="6" [xl]="2">
+          <div cFormFloating>
+            <input cFormControl formControlName="numero" placeholder="Número" autocomplete="off" [valid]="
+            this.errors && this.errors['numero'] != null ? false 
+                    :getForms['numero'].touched && getForms['numero'].valid
+                    ? true
+                    : (submitted || getForms['numero'].touched) &&
+                      getForms['numero'].invalid
+                    ? false
+                    : undefined
+                " />
+            @if(submitted || getForms['numero'].invalid){
+              <c-form-feedback
+              [valid]="!(submitted || getForms['numero'].invalid)">
+              <ng-container *ngIf="getForms['numero'].errors as errors">
+                <div>Número inválido</div>
+              </ng-container>
+            </c-form-feedback>
+            }
+            
+            @if (this.errors && this.errors['numero'] != null) {
+              <c-form-feedback [valid]="false">
+                @for (erro of this.errors['numero']; track $index) {
+                <ng-container>
+                  <div>{{erro}}</div>
+                </ng-container>
+                }
+              </c-form-feedback>
+              }
+            <label cLabel for="floatingSelectGrid">Número</label>
+          </div>
+        </c-col>
+
+        <c-col [sm]="12" [md]="6" [xl]="2">
+          <div cFormFloating>
+            <input cFormControl formControlName="bairro" placeholder="Bairro" autocomplete="off" [valid]="
+            this.errors && this.errors['bairro'] != null ? false 
+                    :getForms['bairro'].touched && getForms['bairro'].valid
+                    ? true
+                    : (submitted || getForms['bairro'].touched) &&
+                      getForms['bairro'].invalid
+                    ? false
+                    : undefined
+                " />
+            @if(submitted || getForms['bairro'].invalid){
+              <c-form-feedback
+              [valid]="!(submitted || getForms['bairro'].invalid)">
+              <ng-container *ngIf="getForms['bairro'].errors as errors">
+                <div>Bairro inválido</div>
+              </ng-container>
+            </c-form-feedback>
+            }
+            
+            @if (this.errors && this.errors['bairro'] != null) {
+              <c-form-feedback [valid]="false">
+                @for (erro of this.errors['bairro']; track $index) {
+                <ng-container>
+                  <div>{{erro}}</div>
+                </ng-container>
+                }
+              </c-form-feedback>
+              }
+            <label cLabel for="floatingSelectGrid">Bairro</label>
+          </div>
+        </c-col>
+
+        <c-col [sm]="12" [md]="6" [xl]="4">
+          <div cFormFloating>
+            <input cFormControl formControlName="telefone" placeholder="Telefone" autocomplete="off" [valid]="
+            this.errors && this.errors['telefone'] != null ? false 
+                    :getForms['telefone'].touched && getForms['telefone'].valid
+                    ? true
+                    : (submitted || getForms['telefone'].touched) &&
+                      getForms['telefone'].invalid
+                    ? false
+                    : undefined
+                " />
+            @if(submitted || getForms['telefone'].invalid){
+              <c-form-feedback
+              [valid]="!(submitted || getForms['telefone'].invalid)">
+              <ng-container *ngIf="getForms['telefone'].errors as errors">
+                <div>Telefone inválido</div>
+              </ng-container>
+            </c-form-feedback>
+            }
+            
+            @if (this.errors && this.errors['telefone'] != null) {
+              <c-form-feedback [valid]="false">
+                @for (erro of this.errors['telefone']; track $index) {
+                <ng-container>
+                  <div>{{erro}}</div>
+                </ng-container>
+                }
+              </c-form-feedback>
+              }
+            <label cLabel for="floatingSelectGrid">Telefone</label>
+          </div>
+        </c-col>
+
+        <c-col [sm]="12" [md]="6" [xl]="4">
+          <div cFormFloating>
+            <input cFormControl formControlName="latitude" placeholder="Latitude" autocomplete="off" [valid]="
+            this.errors && this.errors['latitude'] != null ? false 
+                    :getForms['latitude'].touched && getForms['latitude'].valid
+                    ? true
+                    : (submitted || getForms['latitude'].touched) &&
+                      getForms['latitude'].invalid
+                    ? false
+                    : undefined
+                " />
+            @if(submitted || getForms['latitude'].invalid){
+              <c-form-feedback
+              [valid]="!(submitted || getForms['latitude'].invalid)">
+              <ng-container *ngIf="getForms['latitude'].errors as errors">
+                <div>Latitude inválida</div>
+              </ng-container>
+            </c-form-feedback>
+            }
+            
+            @if (this.errors && this.errors['latitude'] != null) {
+              <c-form-feedback [valid]="false">
+                @for (erro of this.errors['latitude']; track $index) {
+                <ng-container>
+                  <div>{{erro}}</div>
+                </ng-container>
+                }
+              </c-form-feedback>
+              }
+            <label cLabel for="floatingSelectGrid">Latitude</label>
+          </div>
+        </c-col>
+
+        <c-col [sm]="12" [md]="6" [xl]="4">
+          <div cFormFloating>
+            <input cFormControl formControlName="longitude" placeholder="Longitude" autocomplete="off" [valid]="
+            this.errors && this.errors['longitude'] != null ? false 
+                    :getForms['longitude'].touched && getForms['longitude'].valid
+                    ? true
+                    : (submitted || getForms['longitude'].touched) &&
+                      getForms['longitude'].invalid
+                    ? false
+                    : undefined
+                " />
+            @if(submitted || getForms['longitude'].invalid){
+              <c-form-feedback
+              [valid]="!(submitted || getForms['longitude'].invalid)">
+              <ng-container *ngIf="getForms['longitude'].errors as errors">
+                <div>Longitude inválida</div>
+              </ng-container>
+            </c-form-feedback>
+            }
+            
+            @if (this.errors && this.errors['longitude'] != null) {
+              <c-form-feedback [valid]="false">
+                @for (erro of this.errors['longitude']; track $index) {
+                <ng-container>
+                  <div>{{erro}}</div>
+                </ng-container>
+                }
+              </c-form-feedback>
+              }
+            <label cLabel for="floatingSelectGrid">Longitude</label>
+          </div>
+        </c-col>
+
+
+
+
+
+        <c-col [sm]="12" [md]="12" [xl]="12">
+          <c-form-check [switch]="true">
+            <input cFormCheckInput type="checkbox" formControlName="ativo" />
+            <label cFormCheckLabel>Ativo</label>
+          </c-form-check>
+        </c-col>
+      </c-row>
+
+      <c-row [gutter]="2">
+        <c-col [sm]="12" [md]="12" [xl]="12">
+          <button cButton type="submit" color="primary">Salvar</button>
+        </c-col>
+      </c-row>
+    </form>
+  </c-card-body>
+</c-card>

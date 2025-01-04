@@ -61,6 +61,13 @@ export const routes: Routes = [
         }
       },
       {
+        path: 'areas-receptoras',
+        loadComponent: () => import('./views/areas-receptoras/areas-receptoras.component').then(m => m.AreasReceptorasComponent),
+        data: {
+          title: 'Áreas Recetoras'
+        }
+      },
+      {
         path: 'theme',
         loadChildren: () => import('./views/theme/routes').then((m) => m.routes)
       },
