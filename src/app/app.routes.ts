@@ -54,6 +54,13 @@ export const routes: Routes = [
         }
       },
       {
+        path: 'atividades',
+        loadComponent: () => import('./views/atividades/atividades.component').then(m => m.AtividadesComponent),
+        data: {
+          title: 'Atividades/Usos'
+        }
+      },
+      {
         path: 'theme',
         loadChildren: () => import('./views/theme/routes').then((m) => m.routes)
       },

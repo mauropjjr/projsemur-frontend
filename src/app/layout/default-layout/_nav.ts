@@ -25,6 +25,7 @@ export const navItems: INavData[] = [
     url: '/analistas',
     iconComponent: { name: 'cil-drop' }
   },
+  
   {
     name: 'Tipo de Arquivos',
     url: '/tipo-arquivos',
@@ -42,7 +43,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Atividades/Usos',
-    url: '/',
+    url: '/atividades',
     iconComponent: { name: 'cil-drop' }
   },
   {
